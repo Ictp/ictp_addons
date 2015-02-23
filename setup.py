@@ -12,8 +12,9 @@ if __name__ == '__main__':
         entry_points="""
             [indico.ext_types]
             ictp_addons = indico.ext.ictp_addons
-			[indico.ext]
-			ictp_addons.sponsor_management = indico.ext.ictp_addons.sponsor_management
+
+            [indico.ext]
+            ictp_addons.sponsor_management = indico.ext.ictp_addons.sponsor_management
         """
     )
 
