@@ -19,13 +19,10 @@
 from MaKaC.i18n import _
 
 globalOptions = [
-
-	("sponsors", {"description": "Sponsors dictionary",
+("sponsors", {"description": "Sponsors dictionary",
                       "type": "links",
                       "subType": "sponsors",
                       "defaultValue": [],
                       "editable": True,
-                      "visible": True} )
-
-       
+                      "visible": True} )      
 ]
