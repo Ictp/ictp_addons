@@ -82,7 +82,8 @@ class RHLogoUpload(RHConferenceModifBase):
         htdocsDir = Config.getInstance().getHtdocsDir()
         logoDir = "/css/ICTP/images/sponsor-logo/"
         
-        try:
+        #try:
+        if 1:
             # lets UPLOAD the file and SAVE it in a custom FOLDER
             fileEntry = self._reqParams['file']
             fileName = fileEntry.filename
@@ -94,8 +95,8 @@ class RHLogoUpload(RHConferenceModifBase):
             file = open(filePath, "wb")                                    
             file.write(fileData)
             file.close()
-        except:
-            return json.dumps({'status': 'KO','info': 'ERROR: File NOT uploaded'})            
+        #except:
+        #    return json.dumps({'status': 'KO','info': 'ERROR: File NOT uploaded'})            
             
         return json.dumps({'status': 'OK','info': fileName})
 
