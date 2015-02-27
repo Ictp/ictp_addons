@@ -45,7 +45,7 @@ from indico.util import json
 from MaKaC.webinterface.rh.conferenceModif import RHConferenceModifBase
 #from MaKaC.webinterface.rh.base import RHProtected
 
-from MaKaC.plugins.base import PluginsHolder
+from MaKaC.plugins import PluginsHolder, Plugin
 from indico.core.config import Config
 
 from os import listdir
@@ -61,6 +61,7 @@ from indico.core.extpoint import Component
 from indico.core.extpoint.plugins import IPluginImplementationContributor
 from MaKaC.services.implementation.base import ServiceBase
 from MaKaC.services.implementation.plugins import PluginOptionsBase
+
 
 
 class UHLogoUpload(URLHandler):
@@ -103,7 +104,20 @@ class RHLogoUpload(RHConferenceModifBase):
 
 
 
+class ExportDictionary(ServiceBase):
+    """
+    """
+    
+    plugin = PluginsHolder().getPluginType('ictp_addons').getPlugin("sponsor_management")
+    sponsors_array = plugin.getOptions()["sponsors"].getValue()
+    
+    def _checkParams(self,params):
+        pass
+        
 
+    def process(self, params):        
+
+        return json.dumps({'success': True, 'info': self.sponsors_array})
 
 
 
@@ -132,17 +146,7 @@ class RHLogoUpload(RHConferenceModifBase):
 
 
 
-# class Export(ServiceBase):
-#     """
-#     """
-#     
-#     def _checkParams(self):
-#         ServiceBase._checkParams(self)
-#         self._data = self._params['data']
-# 
-#     def _getAnswer(self):        
-#         #entries = json.loads(self._data)['data']
-#         return json.dumps({'success': True, 'info': self._data})
+
 
 
 
@@ -185,6 +189,9 @@ class RHLogoUpload(RHConferenceModifBase):
 # 
 #         self._target = self._ph.getPluginType(self._pluginType).getPlugin(self._pluginId)
 # 
+
+
+
 
 
 class PluginImplementationContributor(Component, Observable):

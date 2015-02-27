@@ -23,4 +23,4 @@ from indico.web.flask.wrappers import IndicoBlueprint
 
 blueprint = IndicoBlueprint('ictp_addons-sponsor_management', __name__)
 blueprint.add_url_rule('/admin/plugins/type/ictp_addons/sponsor_management-upload', 'logoUpload', handlers.RHLogoUpload, methods=('POST',))
-#blueprint.add_url_rule('/admin/plugins/plugin/ictp_addons/sponsor_management/save-options', 'sponsor_management-save', handlers.RHSponsorPluginsSaveOptions, methods=('POST',))
+blueprint.add_url_rule('/admin/plugins/type/ictp_addons/sponsor_management/export_dictionary', 'exportDictionary', handlers.ExportDictionary)
