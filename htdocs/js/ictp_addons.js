@@ -1,6 +1,8 @@
 
 function createDeleteAllDialog(timetable){
-    new ConfirmPopup($T("Delete ALL entries from Timetable"), $T("Are you sure you wish to delete ALL sessions, contributions and breaks? Note that you cannot undo this action."), function(confirmed){
+    var txt = "<p>Are you sure you wish to delete ALL sessions, contributions and breaks? Note that you cannot undo this action.</p>"+
+            "<h3>TAKE CARE:</h3> <strong>all FILES (material) attached to Contributions you have already uploaded, WILL BE DELETED TOO!!!.</strong>";
+    new ConfirmPopup($T("Delete ALL entries from Timetable"), $T(txt), function(confirmed){
             if(confirmed){
                 var confId = timetable["eventInfo"]["id"]
                 var killProgress = IndicoUI.Dialogs.Util.progress($T("Deleting the entries..."));                
