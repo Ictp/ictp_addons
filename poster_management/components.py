@@ -48,16 +48,18 @@ class ObjectChangeListener(Component):
 
     def deleted(self, obj, oldOwner):
         print "****DELETED CALL OBJ=",obj, oldOwner
-        objType = obj.getFileType().lower()
-        objName = obj.getFileName().lower()
+        
+        
         objClass = type(oldOwner).__name__
         objClassTitle = oldOwner.getTitle().lower()
-        print "objName:",objName
-        print "objType:",objType
-        print "objClass:",objClass
-        print "objClassTitle:",oldOwner.getTitle().lower()
+        #print "objName:",objName
+        #print "objType:",objType
+        #print "objClass:",objClass
+        #print "objClassTitle:",oldOwner.getTitle().lower()
 
         if objClass == 'Poster':
+            objType = obj.getFileType().lower()
+            objName = obj.getFileName().lower()
             if objName.find('poster') > -1 and objType == 'pdf' and objName.find('list_of_poster') == -1 and objName.find('session') == -1:
                 # If POSTER is present, remove it
                 tempDir = Config.getInstance().getSharedTempDir()
@@ -69,16 +71,19 @@ class ObjectChangeListener(Component):
                         print "eccolo:",thumbPath
                         os.remove(thumbPath)
         else:
-            if (objClassTitle.find('photo') > -1 or objClassTitle.find('picture') > -1 or objClassTitle.find('group') > -1) and objType == 'jpg':
-                # If Group Photo is present, remove it
-                tempDir = Config.getInstance().getSharedTempDir()
-                photoDir = tempDir+"/photos"
-                if os.path.isdir(photoDir):
-                    confId = str(oldOwner.owner.getId())
-                    thumbPath = photoDir + "/photo_" + confId + "_" + objName
-                    if os.path.isfile(thumbPath):
-                        print "eccolo:",thumbPath
-                        os.remove(thumbPath)
+            if (objClassTitle.find('photo') > -1 or objClassTitle.find('picture') > -1 or objClassTitle.find('group') > -1):
+                objType = obj.getFileType().lower()
+                objName = obj.getFileName().lower()
+                if (objType == 'jpg'):
+                    # If Group Photo is present, remove it
+                    tempDir = Config.getInstance().getSharedTempDir()
+                    photoDir = tempDir+"/photos"
+                    if os.path.isdir(photoDir):
+                        confId = str(oldOwner.owner.getId())
+                        thumbPath = photoDir + "/photo_" + confId + "_" + objName
+                        if os.path.isfile(thumbPath):
+                            print "eccolo:",thumbPath
+                            os.remove(thumbPath)
             
 
 
