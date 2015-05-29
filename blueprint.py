@@ -23,5 +23,6 @@ from indico.web.flask.wrappers import IndicoBlueprint
 
 blueprint = IndicoBlueprint('ictp_addons', __name__)
 blueprint.add_url_rule('/ictp_addons/<path:filepath>', 'htdocs', handlers.RHIctpaddonsHtdocs)
+blueprint.add_url_rule('/event/<confId>/exportTimetableXLS', '', handlers.RHexportTimetableXLS)
 
 

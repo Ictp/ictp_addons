@@ -36,6 +36,12 @@ from indico.core.extpoint.plugins import IPluginDocumentationContributor
 from indico.ext.importer.pages import WPluginHelp
 
 
+
+
+
+
+
+
 class Ictp_addonsContributor(Component, Observable):
     """
     Adds interface extension to event's timetable modification websites.
@@ -64,7 +70,11 @@ class Ictp_addonsContributor(Component, Observable):
         """
         Inserts customized links in a timetable header.
         """
-        params.update({"Delete Timetable" : "createDeleteAllDialog","Set Entries Protection" : "createTimetableProtectionDialog"})
+        params.update({
+            "ExportXLS" : "exportTimetableXLSDialog",
+            "Delete Timetable" : "createDeleteAllDialog",
+            "Set Entries Protection" : "createTimetableProtectionDialog"
+            })
 
 
 class PluginDocumentationContributor(Component):

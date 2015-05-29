@@ -1,3 +1,10 @@
+function exportTimetableXLSDialog(timetable){
+        var confId = timetable["eventInfo"]["id"]
+        location.href='/event/'+confId+'/exportTimetableXLS'; 
+};
+
+
+
 
 function createDeleteAllDialog(timetable){
     var txt = "<p>Are you sure you wish to delete ALL sessions, contributions and breaks? Note that you cannot undo this action.</p>"+

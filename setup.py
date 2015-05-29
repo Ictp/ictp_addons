@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 if __name__ == '__main__':
     setup(
         name='ictp_addons',
-        version="0.5",
+        version="0.6",
         description="Ictp useful tools",
         author="Giorgio Pieretti",
         packages=find_packages(),
