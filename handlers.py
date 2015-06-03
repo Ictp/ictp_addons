@@ -30,7 +30,6 @@ from MaKaC import conference
 import xlwt
 from flask import Response
 import StringIO
-
 from MaKaC.conference import ConferenceHolder
 
 from MaKaC.webinterface.rh.conferenceModif import RHConferenceModifBase
@@ -104,19 +103,29 @@ class RHexportTimetableXLS(RHConferenceModifBase):
                         sheet1.write(row, 5, slotEntry.getStartDate().time(), styleHM)
                         firstEntry = False
                     td = slotEntry.getDuration()                    
-                    #sheet1.write(row, 6, ':'.join(str(td).split(':')[:2]), styleHM)
                     sheet1.write(row, 6, (datetime.datetime.min + td).time(), styleHM)
                     
                     if entryType == 'TALK':
-                        #
                         speakers = slotEntry.getOwner().getSpeakerList()
-                        for speaker in speakers:
-                            value = speaker.getValues()
+                        if len(speakers) == 1:
+                            value = speakers[0].getValues()
                             name = value['firstName']
                             if value['familyName']: name+= " " + value['familyName']
-                            sheet1.write(row, 7, name)  
+                            sheet1.write(row, 7, name) 
                             if value['affilation']:
                                 sheet1.write(row, 8, value['affilation'])
+                        elif speakers:
+                            i=1
+                            name = ''                                                         
+                            for speaker in speakers:
+                                value = speaker.getValues()
+                                name += value['firstName']
+                                if value['familyName']: name+= " " + value['familyName']
+                                if value['affilation']: name+= " (" + value['affilation'] + ")"
+                                if i<len(speakers): name += ", "
+                                i += 1
+                            sheet1.write(row, 7, name)  
+                                    
                     room = slotEntry.getRoom().getName()
                     if room and room != defaultRoom:
                         sheet1.write(row, 9, slotEntry.getRoom().getName())     
