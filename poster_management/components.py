@@ -47,15 +47,10 @@ class ObjectChangeListener(Component):
     implements(IObjectLifeCycleListener)
 
     def deleted(self, obj, oldOwner):
-        print "****DELETED CALL OBJ=",obj, oldOwner
-        
-        
+        print "****DELETING OBJ=",obj, oldOwner
+
         objClass = type(oldOwner).__name__
         objClassTitle = oldOwner.getTitle().lower()
-        #print "objName:",objName
-        #print "objType:",objType
-        #print "objClass:",objClass
-        #print "objClassTitle:",oldOwner.getTitle().lower()
 
         if objClass == 'Poster':
             objType = obj.getFileType().lower()
@@ -68,7 +63,6 @@ class ObjectChangeListener(Component):
                     confId = str(oldOwner.owner.getId())
                     thumbPath = postersDir + "/poster_" + confId
                     if os.path.isfile(thumbPath):
-                        print "eccolo:",thumbPath
                         os.remove(thumbPath)
         else:
             if (objClassTitle.find('photo') > -1 or objClassTitle.find('picture') > -1 or objClassTitle.find('group') > -1):
@@ -82,18 +76,12 @@ class ObjectChangeListener(Component):
                         confId = str(oldOwner.owner.getId())
                         thumbPath = photoDir + "/photo_" + confId + "_" + objName
                         if os.path.isfile(thumbPath):
-                            print "eccolo:",thumbPath
                             os.remove(thumbPath)
-            
-
-
-                    
-
-
+        return
 
     def created(self, obj, owner):
-        pass
+        return
         
     def moved(self, obj, fromOwner, toOwner):
-        pass
+        return
 
