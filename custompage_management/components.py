@@ -25,24 +25,28 @@ class MyChangeListener(Component):
 
     def createPage(self, obj):
         pageTitle = "How to participate"
-        pageContent = "<div><p></p><p>Participation in ICTP activities is by application. If you wish to apply to this activity, " \
-                      "please click on the \"Apply here\" link in the left menu. You will be notified about the outcome " \
-                      "of your application in due time.</p><p>There are no registration fees, unless otherwise " \
-                      "indicated.</p><p>Accommodation is available on a first-come first-served basis in the ICTP " \
-                      "Guesthouses on campus. Room rates and other details can be found " \
+        pageContent = "<div class=\"conferencetitlelink blue\">How to participate</div>" \
+                      "<div class=\"conferenceDetails\"><div class=\"description \" itemprop=\"description\">" \
+                      "<div style=\"text-align: justify;\"><br />Participation in ICTP activities is by application. " \
+                      "If you wish to apply to this activity, please click on the &quot;Apply here&quot; link in the " \
+                      "left menu. You will be notified about the outcome of your application in due time.<br />" \
+                      "&nbsp;<br />There are no registration fees, unless otherwise indicated.<br />&nbsp;<br />" \
+                      "Accommodation is available on a first-come first-served basis in the ICTP Guesthouses on campus. " \
+                      "Room rates and other details can be found " \
                       "<a href=\"https://www.ictp.it/visit-ictp/accommodation/guesthouses.aspx\" target=\"_blank\">" \
                       "here</a>. If you are selected for participation you will receive instructions regarding " \
-                      "accommodation in the invitation letter.</p><p>Participants from developing countries " \
-                      "(see list <a href=\"http://www.ictp.it/visit-ictp/developingcountries.aspx\" target=\"_blank\">" \
-                      "here</a>, particularly those at the early stages of their career, can apply for grants to " \
-                      "support their participation. Grants can cover local costs and/or travel costs, as " \
-                      "indicated in the application form. ICTP encourages the participation of female scientists." \
-                      "</p><p>If your country is not included in the list above but you believe there are good " \
-                      "reasons for you to be considered for a travel grant, please mention it in the \"comments\" " \
-                      "field at the end of the application form.</p><p>Some countries have signed agreements" \
-                      " with ICTP to make available, for their own nationals, a small number of travel grants, " \
-                      "for participation in various ICTP activities. These grants are listed " \
-                      "<a href=\"https://www.ictp.it/travel-fellowships.aspx\" target=\"_blank\">here</a>. </p></div>"
+                      "accommodation in the invitation letter.<br />&nbsp;<br />Participants from developing " \
+                      "countries (see list <a href=\"http://www.ictp.it/visit-ictp/developingcountries.aspx\" " \
+                      "target=\"_blank\">here</a>, particularly those at the early stages of their career, " \
+                      "can apply for grants to support their participation. Grants can cover local costs " \
+                      "and/or travel costs, as indicated in the application form. ICTP encourages the " \
+                      "participation of female scientists.<br />&nbsp;<br />If your country is not included in " \
+                      "the list above but you believe there are good reasons for you to be considered for a travel " \
+                      "grant, please mention it in the &quot;comments&quot; field at the end of the application form." \
+                      "<br />&nbsp;<br />Some countries have signed agreements with ICTP to make available, for their " \
+                      "own nationals, a small number of travel grants, for participation in various ICTP activities. " \
+                      "These grants are listed <a href=\"https://www.ictp.it/travel-fellowships.aspx\" " \
+                      "target=\"_blank\">here</a>.<br />&nbsp;</div></div></div>"
 
         intPagesMgr=internalPagesMgr.InternalPagesMgrRegistery().getInternalPagesMgr(obj)
         if pageTitle not in [page.getTitle() for page in intPagesMgr.getPagesList()]:
