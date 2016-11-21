@@ -37,7 +37,7 @@ class MyChangeListener(Component):
                       "here</a>. If you are selected for participation you will receive instructions regarding " \
                       "accommodation in the invitation letter.<br />&nbsp;<br />Participants from developing " \
                       "countries (see list <a href=\"http://www.ictp.it/visit-ictp/developingcountries.aspx\" " \
-                      "target=\"_blank\">here</a>, particularly those at the early stages of their career, " \
+                      "target=\"_blank\">here</a>), particularly those at the early stages of their career, " \
                       "can apply for grants to support their participation. Grants can cover local costs " \
                       "and/or travel costs, as indicated in the application form. ICTP encourages the " \
                       "participation of female scientists.<br />&nbsp;<br />If your country is not included in " \
